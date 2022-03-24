@@ -1,0 +1,86 @@
+.nav-links{
+        color: #fff;
+        font-size: 0.8rem;
+        transition: all 300ms ease;
+        &:hover ,&.active{
+          color: #ffc20f;
+          cursor: pointer;
+          text-decoration: underline solid red 2px;
+          text-underline-offset: 1em;
+        }
+      }
+
+.navbar {
+  height: 5rem;
+  background: #161616;
+  ul {
+    li {
+      padding: 0 0.2rem;
+
+      a {
+      @extend .nav-links;
+        }
+      }
+
+    }
+  span {
+    color: #fff;
+    font-size: 1.4rem;
+    transition: all 300ms ease;
+    &:hover {
+      color: #ffc20f;
+      cursor: pointer;
+    }
+  }
+}
+
+#menu-btn{
+  display: none;
+}
+
+aside {
+  display: none;
+  position: absolute;
+}
+
+aside .sidebar a {
+  display: flex;
+  text-decoration: none;
+  padding-right: 20px;
+  height: 4.5rem;
+  @extend .nav-links;
+}
+
+asie .icons{
+  display: flex;
+  padding-right: 20px;
+  
+
+}
+
+button {
+	border: none;
+    background: transparent;
+}
+@media screen and (max-width:767px) {
+  aside {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
+  background: #161616;
+  width: 250px;
+span{
+  color: #fff;
+    font-size: 1.4rem;
+    transition: all 300ms ease;
+    &:hover {
+      color: #ffc20f;
+      cursor: pointer;
+    }
+}
+  }
+#menu-btn{
+  display: block;
+}
+}
