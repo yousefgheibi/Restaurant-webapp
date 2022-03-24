@@ -1,0 +1,166 @@
+.hero {
+  background: #161616;
+  color: #fff;
+  h1 {
+    font-size: 3.3rem;
+    font-weight: 600;
+  }
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .btn-actions button {
+    border-radius: 10px;
+    width: 90px;
+    height: 40px;
+    padding: 5px;
+    outline: none;
+    font-size: 0.8rem;
+    box-shadow: none;
+    transition: all 300ms ease;
+    &:hover {
+      -webkit-box-shadow: 0px 0px 18px 1px rgba(255, 194, 15, 0.57);
+      box-shadow: 0px 0px 18px 1px rgba(255, 194, 15, 0.57);
+    }
+  }
+
+  .btn-actions {
+    .btn-signin {
+      background: #ffc20f;
+      border: 1px solid #ffc20f;
+    }
+    .btn-login {
+      background: transparent;
+      border: 1px solid #ffc20f;
+      color: #ffc20f;
+    }
+  }
+}
+
+.hero-img {
+  width: 70%;
+}
+
+.buttom-hero {
+  background: #ffc20f;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.box-feature {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  border-left: 1px solid #fff;
+  h4 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+
+  img {
+    width: 140px;
+  }
+}
+.box-feature:last-child {
+  border: none;
+}
+
+.menu {
+  h2 {
+    font-size: 1.8rem;
+  }
+  .divider {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    span {
+      color: #ca131f;
+    }
+    hr {
+      color: #ca131f;
+      width: 10rem;
+      opacity: 1;
+    }
+  }
+
+  .nav-pills {
+    margin-top: 3rem;
+    justify-content: center;
+    justify-self: center;
+    background-color: #ca131f;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+    margin-right: 25%;
+
+    a {
+      color: #fff;
+      opacity: 0.7;
+
+      &:hover,
+      &.active {
+        opacity: 1;
+        background: none;
+        text-decoration: underline solid #ffc20f 2px;
+        text-underline-offset: 1em;
+      }
+    }
+  }
+
+  .card {
+    border-radius: 10px;
+    padding: 0.7rem;
+    margin: 0.5rem;
+    .card-body{
+      padding: 0;
+      padding-top: 1rem;
+    }
+    img {
+      border-radius: 10px;
+    }
+    .card-title{
+      font-size: 1rem;
+      transition: all 300ms ease;
+
+      &:hover{
+        color: #ca131f;
+        cursor: pointer;
+      }
+    }
+    .price {
+      color: #ca131f;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+    .btn-actions {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+
+      .add-to-cart {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background: #f6f6f6;
+        border: #f6f6f6;
+        padding: 0.5rem;
+        border-radius: 10px;
+        box-sizing: none;
+        transition: all 300ms ease;
+        span {
+          margin-left: 7px;
+        }
+
+        &:hover {
+          -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.34); 
+          box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.34);
+        }
+      }
+    }
+  }
+}
