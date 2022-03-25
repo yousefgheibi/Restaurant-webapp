@@ -12,14 +12,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     document.getElementById('close-btn')?.addEventListener('click', () => {
-      console.log(this.sidebar.nativeElement);
         this.renderer.setStyle(this.sidebar.nativeElement,"display","none");
   })
 
   document.getElementById('menu-btn')?.addEventListener('click', () => {
-    console.log(this.sidebar.nativeElement);
     this.renderer.setStyle(this.sidebar.nativeElement, 'display', 'flex');
   });
 
+}
+
+onCloseMenu(){
+this.renderer.setStyle(this.sidebar.nativeElement, 'display', 'none');
 }
 }
