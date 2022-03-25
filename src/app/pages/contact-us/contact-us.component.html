@@ -49,29 +49,29 @@
         </div>
       </div>
       <div class="col-md-12">
-          <form>
+          <form [formGroup]="contactformValue">
               <div class="row">
 <div class="col-md-4 mb-3">
     <label class="form-label">نام و نام خانوادگی</label>
-    <input type="email" class="form-control" placeholder="نام شما">
+    <input type="email" class="form-control" formControlName="name" required placeholder="نام شما">
   </div>
   <div class="col-md-4 mb-3">
     <label class="form-label">پست الکترونیک</label>
-    <input type="email" class="form-control" placeholder="ایمیل شما">
+    <input type="email" class="form-control" formControlName="email" required placeholder="ایمیل شما">
   </div>
   <div class="col-md-4 mb-3">
     <label class="form-label">
 موضوع</label>
-    <input type="text" class="form-control" placeholder="موضوع پیام">
+    <input type="text" class="form-control" formControlName="subject" required placeholder="موضوع پیام">
   </div>
               </div>
   
   <div class="mb-3">
     <label class="form-label">پیام</label>
-    <textarea class="form-control" rows="5" placeholder="پیام خود را بنویسید..."></textarea>
+    <textarea class="form-control" rows="5" formControlName="message" required placeholder="پیام خود را بنویسید..."></textarea>
   </div>
   
-  <button type="submit" class="btn">ارسال</button>
+  <button class="btn" (click)="sendEmail()">ارسال</button>
 </form>
       </div>
     </div>
