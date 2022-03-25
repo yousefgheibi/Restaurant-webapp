@@ -19,7 +19,7 @@
       </div>
   </div>
     <div *ngIf="!isWait" class="row pt-5">
-      <div *ngFor="let item of blogData" class="col-md-4">
+      <div *ngFor="let item of blogData | paginate: { itemsPerPage: 6, currentPage: p }" class="col-md-4">
         <div class="card">
           <img
             class="card-img-top"
@@ -38,5 +38,7 @@
         </div>
       </div>
     </div>
+   <pagination-controls *ngIf="!isWait" (pageChange)="p = $event" previousLabel="" nextLabel="">
+      </pagination-controls>
    </div>
 </section>

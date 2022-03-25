@@ -8,22 +8,21 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./blog.component.scss'],
 })
 export class BlogComponent implements OnInit {
-  searchKey !: string;
+  searchKey!: string;
+  p: any;
   isWait: boolean = true;
   public blogData: BlogModel[] = [];
-  constructor(private _api:BlogService) {}
+  constructor(private _api: BlogService) {}
 
   ngOnInit(): void {
     this.getBlog();
   }
 
   getBlog() {
-    this._api.getBlogs().subscribe(
-      res=>{
-        this.blogData = res;
-        this.isWait = false;
-      }
-    )
+    this._api.getBlogs().subscribe((res) => {
+      this.blogData = res;
+      this.isWait = false;
+    });
   }
 
   doSearch(searchKey: string) {

@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BlogComponent } from './pages/blog/blog.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { BlogComponent } from './pages/blog/blog.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxPaginationModule,
     ToastrModule.forRoot()
   ],
   providers: [],
