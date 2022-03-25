@@ -89,6 +89,7 @@
 
   .nav-pills {
     margin-top: 3rem;
+    font-size: 0.9rem;
     justify-content: center;
     justify-self: center;
     background-color: #ca131f;
@@ -290,5 +291,19 @@
         text-decoration: none;
       }
     }
+  }
+}
+
+
+@media screen and (max-width:991px) {
+  .menu .nav-pills{
+    margin-right: 10%;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .buttom-hero .box-feature{
+border: none;
   }
 }
