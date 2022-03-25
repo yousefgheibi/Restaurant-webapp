@@ -12,6 +12,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { BlogComponent } from './pages/blog/blog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     AboutUsComponent,
     ContactUsComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,

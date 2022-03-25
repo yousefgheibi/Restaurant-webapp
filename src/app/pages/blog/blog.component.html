@@ -1,0 +1,42 @@
+<section class="blog">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-11 search-area">
+        <span class="material-icons">podcasts</span>
+        <input
+          type="search"
+          autocomplete="off"
+          placeholder=" جستجو کنید ..."
+          name="searchKey"
+          [(ngModel)]="searchKey"
+          (ngModelChange)="doSearch($event)"
+        />
+      </div>
+    </div>
+     <div *ngIf="isWait" class="row d-flex justify-content-center loader">
+      <div class="col-md-6">
+        <img src="../../../assets/img/loading.gif" class="w-100" alt="">
+      </div>
+  </div>
+    <div *ngIf="!isWait" class="row pt-5">
+      <div *ngFor="let item of blogData" class="col-md-4">
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="../../../assets/img/{{ item.image }}"
+            alt="Card image"
+            class="w-100"
+          />
+          <div class="card-body">
+            <p class="card-title">{{ item.title }}</p>
+            <small class="price">{{ item.content }}</small>
+            <div class="btn-actions">
+              <div class="date">{{ item.date }}</div>
+              <a href="#">بیشتر</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+</section>
