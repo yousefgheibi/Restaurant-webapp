@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BlogComponent } from './pages/blog/blog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
+import { MenuComponent } from './pages/menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
     ContactUsComponent,
     BlogComponent,
     BlogDetailComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
