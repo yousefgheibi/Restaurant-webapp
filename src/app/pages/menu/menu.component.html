@@ -1,1 +1,74 @@
-<p>menu works!</p>
+<section class="pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 side-bar pl-0 d-none d-sm-block mb-3">
+        <div class="card">
+          <h5>جستجوی محصول</h5>
+          <input
+            type="search"
+            class="search-area"
+            placeholder="جستجوی محصولات…"
+            name="searchKey"
+            autocomplete="off"
+            [(ngModel)]="searchKey"
+            (ngModelChange)="doSearch($event)"
+          />
+        </div>
+        <div class="card mt-3">
+          <h5>آخرین محصولات</h5>
+          <div class="fakeimg">Image</div>
+          <br />
+          <div class="fakeimg">Image</div>
+          <br />
+          <div class="fakeimg">Image</div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="breadcrumb">
+          <p class="mb-0"><a routerLink="">خانه</a> / محصولات</p>
+        </div>
+
+        <div
+          class="menu"
+          [style]="isWait ? 'height:auto' : 'height:600;margin-bottom:20px'"
+        >
+          <div *ngIf="!isWait" class="m-5 text-center">
+            <img src="../../../assets/img/loading.gif" class="w-50"/>
+          </div>
+          <div *ngIf="isWait" class="row">
+            <div
+              *ngFor="let item of productData| paginate: { itemsPerPage: 8, currentPage: p }"
+              class="col-6 col-md-3">
+              <div class="card mx-0">
+                <img
+                  class="card-img-top"
+                  src="../../../assets/img/products/{{item.image}}"
+                  alt="Card image"
+                  class="w-100"
+                />
+                <div class="card-body">
+                  <p class="card-title">{{ item.name }}</p>
+                  <small class="price">  {{ item.price | currency: "  ":"symbol-narrow":"4.0" }} تومان
+                </small>
+                  <div class="btn-actions">
+                    <button class="add-to-cart" (click)="add2Cart(item)">
+                      <span class="material-icons">shopping_cart</span>اضافه به
+                      سبد خرید
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <pagination-controls
+            *ngIf="isWait"
+            (pageChange)="p = $event"
+            previousLabel=""
+            nextLabel=""
+          >
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
