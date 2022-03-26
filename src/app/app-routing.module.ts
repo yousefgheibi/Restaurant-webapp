@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FullLayoutComponent } from './layout/full-layout/full-layout.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'about-us', component: AboutUsComponent },
       { path: 'contact-us', component: ContactUsComponent },
       { path: 'blog', component:BlogComponent },
+      { path: 'blog/:blogId', component:BlogDetailComponent }
     ],
   },
 ];

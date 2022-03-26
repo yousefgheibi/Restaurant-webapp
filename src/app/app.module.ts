@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BlogComponent } from './pages/blog/blog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AboutUsComponent,
     ContactUsComponent,
     BlogComponent,
+    BlogDetailComponent,
   ],
   imports: [
     BrowserModule,

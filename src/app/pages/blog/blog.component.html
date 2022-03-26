@@ -28,11 +28,11 @@
             class="w-100"
           />
           <div class="card-body">
-            <p class="card-title">{{ item.title }}</p>
-            <small class="price">{{ item.content }}</small>
+            <p class="card-title" [routerLink]="[item.id]">{{ item.title }}</p>
+            <small>{{ item.subcontent }}</small>
             <div class="btn-actions">
               <div class="date">{{ item.date }}</div>
-              <a href="#">بیشتر</a>
+              <a [routerLink]="[item.id]">بیشتر</a>
             </div>
           </div>
         </div>
