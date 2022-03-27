@@ -1,52 +1,54 @@
-<section>
-  <div class="container-fluid pb-5">
-    <div *ngIf="isWait" class="row d-flex justify-content-center loader">
-      <div class="col-md-6">
-        <img src="../../../assets/img/loading.gif" class="w-100" alt="" />
+<main>
+  <section>
+    <div class="container-fluid pb-5">
+      <div *ngIf="isWait" class="row d-flex justify-content-center loader">
+        <div class="col-md-6">
+          <img src="../../../assets/img/loading.gif" class="w-100" alt="" />
+        </div>
+      </div>
+      <div *ngIf="!isWait" class="row pt-5">
+        <div class="col-lg-9 col-md-12 blog-detail">
+          <div class="card">
+            <img
+              src="../../../assets/img/{{ blog.image }}"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ blog.title }}<small>{{ blog.date }}</small>
+              </h5>
+              <p class="card-text">{{ blog.content }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-12 sidebar">
+          <div class="card p-3">
+            <div class="header">
+              <h5>آخرین نوشته ها</h5>
+              <ul class="pt-2 pl-0">
+                <li *ngFor="let item of allblog">
+                  <a target="_blank" [routerLink]="['../', item.id]">{{
+                    item.title
+                  }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card mt-3 p-3">
+            <div class="header">
+              <h5>بایگانی ها</h5>
+              <ul class="pt-2 pl-0">
+                <li *ngFor="let item of allblog">
+                  <a target="_blank" [routerLink]="['../', item.id]">{{
+                    item.date
+                  }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div *ngIf="!isWait" class="row pt-5">
-      <div class="col-lg-9 col-md-12 blog-detail">
-        <div class="card">
-          <img
-            src="../../../assets/img/{{ blog.image }}"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">
-              {{ blog.title }}<small>{{ blog.date }}</small>
-            </h5>
-            <p class="card-text">{{ blog.content }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-12 sidebar">
-        <div class="card p-3">
-          <div class="header">
-            <h5>آخرین نوشته ها</h5>
-            <ul class="pt-2 pl-0">
-              <li *ngFor="let item of allblog">
-                <a target="_blank" [routerLink]="['../', item.id]">{{
-                  item.title
-                }}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card mt-3 p-3">
-          <div class="header">
-            <h5>بایگانی ها</h5>
-            <ul class="pt-2 pl-0">
-              <li *ngFor="let item of allblog">
-                <a target="_blank" [routerLink]="['../', item.id]">{{
-                  item.date
-                }}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>

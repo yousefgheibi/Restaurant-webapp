@@ -1,79 +1,108 @@
-<section class="top-hero p-5">
-  <div class="container">
-    <div class="row flex-row-reverse d-flex align-items-center">
-      <div class="col-md-6 content px-md-4">
-        <h2 class="text-center">اطلاعات تماس</h2>
-        <div class="divider">
-          <hr />
-          <span class="material-icons">restaurant_menu</span>
-          <hr />
-        </div>
-        <div class="contact-item mt-3">
-          <div>
-            <span class="material-icons">phone_enabled</span>
-            شماره تماس
+<main>
+  <section class="top-hero p-5">
+    <div class="container">
+      <div class="row flex-row-reverse d-flex align-items-center">
+        <div class="col-md-6 content px-md-4">
+          <h2 class="text-center">اطلاعات تماس</h2>
+          <div class="divider">
+            <hr />
+            <span class="material-icons">restaurant_menu</span>
+            <hr />
           </div>
-          09214536991
-        </div>
-        <div class="contact-item mt-5">
-          <div>
-            <span class="material-icons">phone_enabled</span>
-            ایمیل
+          <div class="contact-item mt-3">
+            <div>
+              <span class="material-icons">phone_enabled</span>
+              شماره تماس
+            </div>
+            09214536991
           </div>
-          info@restaurant-app.com
-        </div>
-        <div class="contact-item mt-5">
-          <div>
-            <span class="material-icons">phone_enabled</span>
-            آدرس
+          <div class="contact-item mt-5">
+            <div>
+              <span class="material-icons">phone_enabled</span>
+              ایمیل
+            </div>
+            info@restaurant-app.com
           </div>
-          بازار نبش شرقی سبزه میدان
+          <div class="contact-item mt-5">
+            <div>
+              <span class="material-icons">phone_enabled</span>
+              آدرس
+            </div>
+            بازار نبش شرقی سبزه میدان
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 mt-3">
-        <img src="../../../assets/img/contact-image.jpg" class="w-100" alt="" />
+        <div class="col-md-6 mt-3">
+          <img
+            src="../../../assets/img/contact-image.jpg"
+            class="w-100"
+            alt=""
+          />
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="contact-form">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="text-center">منتظر انتقادات و پیشنهادات شما هستیم</h2>
-        <div class="divider">
-          <hr />
-          <span class="material-icons">restaurant_menu</span>
-          <hr />
+  <section class="contact-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center">منتظر انتقادات و پیشنهادات شما هستیم</h2>
+          <div class="divider">
+            <hr />
+            <span class="material-icons">restaurant_menu</span>
+            <hr />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <form [formGroup]="contactformValue">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label class="form-label">نام و نام خانوادگی</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="name"
+                  required
+                  placeholder="نام شما"
+                />
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label">پست الکترونیک</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                  required
+                  placeholder="ایمیل شما"
+                />
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label"> موضوع</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="subject"
+                  required
+                  placeholder="موضوع پیام"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">پیام</label>
+              <textarea
+                class="form-control"
+                rows="5"
+                formControlName="message"
+                required
+                placeholder="پیام خود را بنویسید..."
+              ></textarea>
+            </div>
+
+            <button class="btn" (click)="sendEmail()">ارسال</button>
+          </form>
         </div>
       </div>
-      <div class="col-md-12">
-          <form [formGroup]="contactformValue">
-              <div class="row">
-<div class="col-md-4 mb-3">
-    <label class="form-label">نام و نام خانوادگی</label>
-    <input type="email" class="form-control" formControlName="name" required placeholder="نام شما">
-  </div>
-  <div class="col-md-4 mb-3">
-    <label class="form-label">پست الکترونیک</label>
-    <input type="email" class="form-control" formControlName="email" required placeholder="ایمیل شما">
-  </div>
-  <div class="col-md-4 mb-3">
-    <label class="form-label">
-موضوع</label>
-    <input type="text" class="form-control" formControlName="subject" required placeholder="موضوع پیام">
-  </div>
-              </div>
-  
-  <div class="mb-3">
-    <label class="form-label">پیام</label>
-    <textarea class="form-control" rows="5" formControlName="message" required placeholder="پیام خود را بنویسید..."></textarea>
-  </div>
-  
-  <button class="btn" (click)="sendEmail()">ارسال</button>
-</form>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>

@@ -69,3 +69,15 @@
     }
   }
 }
+
+
+@media screen and (max-width:767px) {
+    .blog-detail{
+      .card-title{
+        font-size: 1.5rem !important;
+        small{
+          display: none;
+        }
+      } 
+    }
+}

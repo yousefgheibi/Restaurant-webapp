@@ -4,6 +4,12 @@
     src: url(assets/fonts/IRANSansWebMedium.woff2);
 }
 
+aside{
+    z-index: 999;
+}
+main{
+    z-index: 1;
+}
 body{
     font-family: 'irsans', cursive;
 }
