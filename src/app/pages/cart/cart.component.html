@@ -1,106 +1,112 @@
 <main>
   <section *ngIf="hasProducts()" class="cart">
-  <div class="container py-5">
-    <div class="row d-flex justify-content-center">
-      <div class="col-12 col-md-8">
-        <div class="table-responsive">
-          <table class="table table-sm">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col">محصول</th>
-                <th scope="col">قیمت</th>
-                <th scope="col">تعداد</th>
-                <th scope="col">جمع جزء</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of products | keyvalue">
-                <ng-container *ngIf="item.value[0] as product">
-                  <td>
-                    <button class="mt-0 mt-md-3 btn-delete" (click)="removeItem(product)">
-                      <span class="material-icons"> close </span>
-                    </button>
-                  </td>
-                  <td>
-                    <img
-                      class="mt-1 item-img"
-                      src="../../../assets/img/products/{{ product.image }}"
-                      alt="{{ product.name }}"
-                    />
-                  </td>
-                  <td>
-                    <p class="mt-2 mt-md-4 item-title">{{ product.name }}</p>
-                  </td>
-                  <td>
-                    <p class="mt-2 mt-md-4">
-                      {{
-                        product.price | currency: "  ":"symbol-narrow":"4.0"
-                      }}
-                      تومان
-                    </p>
-                  </td>
-                  <td>
-                    <p class="mt-2 mt-md-4 size px-2">
-                       <span class="btn-d material-icons"  (click)="removeFromProductList(product)">remove</span>
-                       <span> {{ item.value.length}}</span>
-                       <span class="btn-d material-icons" (click)="addMore(product)">add</span>
-                    </p>
-                  </td>
-                  <td>
-                    <p class="mt-2 mt-md-4">
-                      {{
-                        item.value.length * product.price
-                          | currency: "  ":"symbol-narrow":"4.0"
-                      }}
-                      تومان
-                    </p>
-                  </td>
-                </ng-container>
-              </tr>
-            </tbody>
-          </table>
+    <div class="container py-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-8">
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col">محصول</th>
+                  <th scope="col">قیمت</th>
+                  <th scope="col">تعداد</th>
+                  <th scope="col">جمع جزء</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of products | keyvalue">
+                  <ng-container *ngIf="item.value[0] as product">
+                    <td>
+                      <button
+                        class="mt-0 mt-md-3 btn-delete"
+                        (click)="removeItem(product)"
+                      >
+                        <span class="material-icons"> close </span>
+                      </button>
+                    </td>
+                    <td>
+                      <img
+                        class="mt-1 item-img"
+                        src="../../../assets/img/products/{{ product.image }}"
+                        alt="{{ product.name }}"
+                      />
+                    </td>
+                    <td>
+                      <p class="mt-2 mt-md-4 item-title">{{ product.name }}</p>
+                    </td>
+                    <td>
+                      <p class="mt-2 mt-md-4">
+                        {{
+                          product.price | currency: "  ":"symbol-narrow":"4.0"
+                        }}
+                        تومان
+                      </p>
+                    </td>
+                    <td>
+                      <p class="mt-2 mt-md-4 size px-2">
+                        <span
+                          class="btn-d material-icons"
+                          (click)="removeFromProductList(product)"
+                          >remove</span
+                        >
+                        <span> {{ item.value.length }}</span>
+                        <span
+                          class="btn-d material-icons"
+                          (click)="addMore(product)"
+                          >add</span
+                        >
+                      </p>
+                    </td>
+                    <td>
+                      <p class="mt-2 mt-md-4">
+                        {{
+                          item.value.length * product.price
+                            | currency: "  ":"symbol-narrow":"4.0"
+                        }}
+                        تومان
+                      </p>
+                    </td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-md-4 card">
-        <div class="p-4">
-          <h3>جمع کل سبد خرید</h3>
-          <hr class="my-4" />
+        <div class="col-12 col-md-4 card">
+          <div class="p-4">
+            <h3>جمع کل سبد خرید</h3>
+            <hr class="my-4" />
 
-          <div class="d-flex justify-content-between mb-4">
-            <h5 class="text-uppercase">تعداد</h5>
-            <h5>{{count}}</h5>
+            <div class="d-flex justify-content-between mb-4">
+              <h5 class="text-uppercase">تعداد</h5>
+              <h5>{{ count }}</h5>
+            </div>
+            <hr class="my-4" />
+
+            <div class="d-flex justify-content-between mb-5">
+              <h5 class="text-uppercase">مجموع</h5>
+              <h5>
+                {{ totalPrice | currency: "  ":"symbol-narrow":"4.0" }} تومان
+              </h5>
+            </div>
+
+            <button type="button" class="btn">تصویه حساب</button>
           </div>
-          <hr class="my-4" />
-
-          <div class="d-flex justify-content-between mb-5">
-            <h5 class="text-uppercase">مجموع</h5>
-            <h5>{{totalPrice   | currency: "  ":"symbol-narrow":"4.0"}}  تومان</h5>
-          </div>
-
-          <button
-            type="button"
-            class="btn"
-          >
-           تصویه حساب
-          </button>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section *ngIf="!hasProducts()">
-  <div class="container">
-    <div class="center">
-      <span class="material-icons">
-add_shopping_cart
-</span>
-      <h4>سبد فروش خالی است!</h4>
-      <p>همین الان اضافه کنید.</p>
-      <button routerLink="/menu" class="btn">منو سفارش</button>
+  <section *ngIf="!hasProducts()">
+    <div class="container">
+      <div class="center">
+        <span class="material-icons"> add_shopping_cart </span>
+        <h4>سبد فروش خالی است!</h4>
+        <p>همین الان اضافه کنید.</p>
+        <button routerLink="/menu" class="btn">بازگشت به فروشگاه</button>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </main>

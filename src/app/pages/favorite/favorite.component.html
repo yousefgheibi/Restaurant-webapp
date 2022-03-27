@@ -1,0 +1,59 @@
+<main>
+  <section *ngIf="hasProduct()" class="py-5">
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+          <div class="breadcrumb">
+            <p class="mb-0"><a routerLink="">خانه</a> / علاقه مندی</p>
+          </div>
+
+          <div class="favorite">
+            <div class="row">
+              <div *ngFor="let item of favoriteProducts" class="col-6 col-md-3">
+                <div class="card mx-0">
+                  <img
+                    class="card-img-top"
+                    src="../../../assets/img/products/{{ item.image }}"
+                    alt="Card image"
+                    class="w-100"
+                  />
+                  <div class="card-body">
+                    <p class="card-title">{{ item.name }}</p>
+                    <small class="price">
+                      {{ item.price | currency: "  ":"symbol-narrow":"4.0" }}
+                      تومان
+                    </small>
+                    <div class="btn-actions">
+                      <button class="add-to-cart" (click)="add2Cart(item)">
+                        <span class="material-icons">shopping_cart</span>
+                        &nbsp;اضافه به سبد خرید
+                      </button>
+                      <button
+                        class="remove-from-favorite"
+                        (click)="removeFromFavorite(item)"
+                      >
+                        <span class="material-icons"> favorite </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="!hasProduct()">
+  <div class="container">
+    <div class="center">
+      <span class="material-icons">
+favorite_border
+</span>
+      <h4>علاقه مندی خالی است. !</h4>
+      <button routerLink="/menu" class="btn">بازگشت به فروشگاه</button>
+    </div>
+  </div>
+</section>
+</main>

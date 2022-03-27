@@ -1,64 +1,115 @@
 <nav class="navbar navbar-expand-md">
   <div class="container-fluid px-5">
     <a class="navbar-brand" href="#">
-        <img src="../../../assets/img/logo.png" alt="">
+      <img src="../../../assets/img/logo.png" alt="" />
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">صفحه اصلی</a>
+          <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"
+            >صفحه اصلی</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/menu']" routerLinkActive="active">منو</a>
+          <a class="nav-link" [routerLink]="['/menu']" routerLinkActive="active"
+            >منو</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/blog']" routerLinkActive="active">وبلاگ</a>
+          <a class="nav-link" [routerLink]="['/blog']" routerLinkActive="active"
+            >وبلاگ</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/contact-us']" routerLinkActive="active">تماس با ما</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/contact-us']"
+            routerLinkActive="active"
+            >تماس با ما</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="active">درباره ما</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/about-us']"
+            routerLinkActive="active"
+            >درباره ما</a
+          >
         </li>
       </ul>
       <span class="material-icons me-auto"> person_outline </span>
-      <span class="material-icons me-3"> favorite_border </span>
-      <span class="material-icons me-3" [routerLink]="['/cart']"> production_quantity_limits </span>
-    </div> 
+      <span class="material-icons me-3" [routerLink]="['/favorite']">
+        favorite_border
+      </span>
+      <span class="material-icons me-3" [routerLink]="['/cart']">
+        production_quantity_limits
+      </span>
+    </div>
     <button id="menu-btn">
-            <span class="material-icons">menu</span>
-          </button>
+      <span class="material-icons">menu</span>
+    </button>
   </div>
 </nav>
 
-
 <aside #aside>
-        <button id="close-btn">
-          <span class="material-icons">close</span>
-        </button>
-        <div class="sidebar">
-          <a (click)="onCloseMenu()" [routerLink]="['/home']" routerLinkActive="active">
-        صفحه اصلی
-          </a>
-          <a (click)="onCloseMenu()" [routerLink]="['/menu']" routerLinkActive="active">
-           منو
-          </a>
-          <a (click)="onCloseMenu()" [routerLink]="['/blog']" routerLinkActive="active">
-            وبلاگ
-          </a>
-          <a (click)="onCloseMenu()" [routerLink]="['/contact-us']" routerLinkActive="active">
-            تماس با ما
-          </a>
-          <a (click)="onCloseMenu()" [routerLink]="['/about-us']" routerLinkActive="active">
-            درباره ما
-          </a>
-    
-        </div>
-        <div class="py-5 icons">
-        <span class="material-icons me-4" (click)="onCloseMenu()"> person_outline </span>
-      <span class="material-icons me-5" (click)="onCloseMenu()"> favorite_border </span>
-      <span class="material-icons me-5" (click)="onCloseMenu()" [routerLink]="['/cart']"> production_quantity_limits </span>
-
-        </div>
-      </aside>
+  <button id="close-btn">
+    <span class="material-icons">close</span>
+  </button>
+  <div class="sidebar">
+    <a
+      (click)="onCloseMenu()"
+      [routerLink]="['/home']"
+      routerLinkActive="active"
+    >
+      صفحه اصلی
+    </a>
+    <a
+      (click)="onCloseMenu()"
+      [routerLink]="['/menu']"
+      routerLinkActive="active"
+    >
+      منو
+    </a>
+    <a
+      (click)="onCloseMenu()"
+      [routerLink]="['/blog']"
+      routerLinkActive="active"
+    >
+      وبلاگ
+    </a>
+    <a
+      (click)="onCloseMenu()"
+      [routerLink]="['/contact-us']"
+      routerLinkActive="active"
+    >
+      تماس با ما
+    </a>
+    <a
+      (click)="onCloseMenu()"
+      [routerLink]="['/about-us']"
+      routerLinkActive="active"
+    >
+      درباره ما
+    </a>
+  </div>
+  <div class="py-5 icons">
+    <span class="material-icons me-4" (click)="onCloseMenu()">
+      person_outline
+    </span>
+    <span
+      class="material-icons me-5"
+      (click)="onCloseMenu()"
+      [routerLink]="['/favorite']"
+    >
+      favorite_border
+    </span>
+    <span
+      class="material-icons me-5"
+      (click)="onCloseMenu()"
+      [routerLink]="['/cart']"
+    >
+      production_quantity_limits
+    </span>
+  </div>
+</aside>

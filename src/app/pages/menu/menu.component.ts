@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductModel } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
   p: any;
   searchKey!: string;
   productData: ProductModel[] = [];
+
   constructor(
     private _productApi: ProductService,
     private _cartService: CartService,
@@ -47,6 +48,25 @@ export class MenuComponent implements OnInit {
 
   add2Cart(item: ProductModel) {
     this._cartService.addToCart(item);
-    this._notificationService.showSuccess('محصول با موفقیت به سبد خرید اضافه شد.');
+    this._notificationService.showSuccess(
+      'محصول با موفقیت به سبد خرید اضافه شد.'
+    );
+  }
+
+  add2Favorite(product: ProductModel) {
+    let items = [];
+    const val = localStorage.getItem('items');
+
+    if (val !== null) {
+      items = JSON.parse(val);
+    }
+
+     items.push(product);
+      localStorage.setItem('items', JSON.stringify(items));
+       this._notificationService.showSuccess(
+         'محصول با موفقیت به علاقه مندی ها اضافه شد.'
+       );
+    
+      
   }
 }

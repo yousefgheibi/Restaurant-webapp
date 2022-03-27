@@ -6,6 +6,7 @@ import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { FavoriteComponent } from './pages/favorite/favorite.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
 
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'blog', component: BlogComponent },
       { path: 'blog/:blogId', component: BlogDetailComponent },
       { path: 'menu', component: MenuComponent },
-      { path: 'cart', component: CartComponent }
+      { path: 'cart', component: CartComponent },
+      { path: 'favorite', component: FavoriteComponent }
     ],
   },
 ];
