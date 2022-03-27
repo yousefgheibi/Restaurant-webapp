@@ -335,67 +335,21 @@
 
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" *ngFor="let item of blogData">
             <div class="card">
               <img
                 class="card-img-top"
-                src="../../../assets/img/b-1.jpg"
+                src="../../../assets/img/{{item.image}}"
                 alt="Card image"
                 class="w-100"
               />
               <div class="card-body">
-                <p class="card-title">خواص زردآلو و تاثیر آن بر سلامتی</p>
-                <small class="price"
-                  >زردآلو از میوه‌های نوبرانه فصل تابستان است که طعم و مزه
-                  بی‌نظیری دارد. خواص و فوایدی که این میوه تابستانی</small
+                <p class="card-title" [routerLink]="['/blog',item.id]">{{item.title}}</p>
+                <small>{{item.subcontent}}</small
                 >
                 <div class="btn-actions">
-                  <div class="date">5 فروردین ، 1401</div>
-                  <a href="#">بیشتر</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                class="card-img-top"
-                src="../../../assets/img/b-3.jpg"
-                alt="Card image"
-                class="w-100"
-              />
-              <div class="card-body">
-                <p class="card-title">طرز تهیه کال کباب</p>
-                <small class="price"
-                  >هر یک از غذاهای خطه سرسبز شمال عطر و طعم منحصر به‌فرد خود را
-                  دارند که همگی به طرز عجیبی اشتها آور هستند.</small
-                >
-                <div class="btn-actions">
-                  <div class="date">5 فروردین ، 1401</div>
-                  <a href="#">بیشتر</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                class="card-img-top"
-                src="../../../assets/img/b-2.jpg"
-                alt="Card image"
-                class="w-100"
-              />
-              <div class="card-body">
-                <p class="card-title">خواص انبه پادشاه میوه ها</p>
-                <small class="price"
-                  >انبه میوه جذاب و دوست‌داشتنی که هسته بزرگی دارد و یکی از
-                  میوه‌های تابستانی به حساب می‌آید. خواص و طعم</small
-                >
-                <div class="btn-actions">
-                  <div class="date">5 فروردین ، 1401</div>
-                  <a href="#">بیشتر</a>
+                  <div class="date">{{item.date}}</div>
+                  <a [routerLink]="['/blog',item.id]">بیشتر</a>
                 </div>
               </div>
             </div>
