@@ -16,6 +16,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { CartComponent } from './pages/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { MenuComponent } from './pages/menu/menu.component';
     BlogComponent,
     BlogDetailComponent,
     MenuComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

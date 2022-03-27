@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/models/product.model';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
-
+import { NotificationService } from 'src/app/services/notification.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -12,7 +13,11 @@ export class MenuComponent implements OnInit {
   p: any;
   searchKey!: string;
   productData: ProductModel[] = [];
-  constructor(private _productApi : ProductService) {}
+  constructor(
+    private _productApi: ProductService,
+    private _cartService: CartService,
+    private _notificationService: NotificationService
+  ) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -41,6 +46,7 @@ export class MenuComponent implements OnInit {
   }
 
   add2Cart(item: ProductModel) {
-    console.log(item);
+    this._cartService.addToCart(item);
+    this._notificationService.showSuccess('محصول با موفقیت به سبد خرید اضافه شد.');
   }
 }

@@ -4,6 +4,7 @@ import { FullLayoutComponent } from './layout/full-layout/full-layout.component'
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { BlogComponent } from './pages/blog/blog.component';
+import { CartComponent } from './pages/cart/cart.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'blog', component: BlogComponent },
       { path: 'blog/:blogId', component: BlogDetailComponent },
       { path: 'menu', component: MenuComponent },
+      { path: 'cart', component: CartComponent }
     ],
   },
 ];

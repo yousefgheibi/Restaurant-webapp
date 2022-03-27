@@ -24,7 +24,7 @@
       </ul>
       <span class="material-icons me-auto"> person_outline </span>
       <span class="material-icons me-3"> favorite_border </span>
-      <span class="material-icons me-3"> production_quantity_limits </span>
+      <span class="material-icons me-3" [routerLink]="['/cart']"> production_quantity_limits </span>
     </div> 
     <button id="menu-btn">
             <span class="material-icons">menu</span>
@@ -58,7 +58,7 @@
         <div class="py-5 icons">
         <span class="material-icons me-4" (click)="onCloseMenu()"> person_outline </span>
       <span class="material-icons me-5" (click)="onCloseMenu()"> favorite_border </span>
-      <span class="material-icons me-5" (click)="onCloseMenu()"> production_quantity_limits </span>
+      <span class="material-icons me-5" (click)="onCloseMenu()" [routerLink]="['/cart']"> production_quantity_limits </span>
 
         </div>
       </aside>

@@ -1,0 +1,143 @@
+.center {
+  padding: 5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  span {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    color: #ca131f;
+  }
+
+  h4 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  button {
+    background: #ca131f;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    transition: all 300ms ease;
+
+    &:hover {
+      -webkit-box-shadow: 0 0 20px 0 rgb(0 0 0 / 10%);
+      box-shadow: 0 0 20px 0 rgb(0 0 0 / 10%);
+    }
+  }
+}
+
+.cart {
+  th {
+    font-size: 15px;
+  }
+
+  td {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+
+  .item-img {
+    width: 80px;
+    border-radius: 5px;
+  }
+
+  .btn-delete {
+    border: none;
+    background: transparent;
+    transition: all 300ms ease;
+    &:hover {
+      color: #ca131f;
+    }
+  }
+
+  .size {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .btn-d {
+      cursor: pointer;
+      transition: all 300ms ease;
+      font-size: 0.9rem;
+      margin: 0 2px;
+      &:hover {
+        color: #ca131f;
+      }
+    }
+  }
+
+  .card {
+    border-radius: 5px;
+    border: none;
+    -webkit-box-shadow: 0 0 5px 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 15%);
+
+    h3 {
+      font-size: 1.2rem;
+    }
+    h5 {
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      background: #ca131f;
+      color: #fff;
+      box-shadow: none;
+      border: none;
+      outline: none;
+      transition: all 300ms ease;
+
+      &:hover {
+        -webkit-box-shadow: 0 0 20px 0 rgb(0 0 0 / 10%);
+        box-shadow: 0 0 20px 0 rgb(0 0 0 / 10%);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cart {
+    th {
+      font-size: 0.85rem;
+    }
+
+    td {
+      margin-top: 25px;
+      font-size: 0.65rem;
+    }
+
+    .item-img {
+      width: 40px;
+      border-radius: 2px;
+    }
+    .size {
+      .btn-d {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .center{
+    span{
+      font-size: 4rem;
+    }
+    h4{
+      font-size: 1.3rem;
+    }
+    p{
+      font-size: 1rem;
+    }
+  }
+}
