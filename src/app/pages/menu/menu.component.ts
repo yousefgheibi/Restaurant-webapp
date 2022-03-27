@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
   p: any;
   searchKey!: string;
   productData: ProductModel[] = [];
+  myFavArray: ProductModel[] = [];
 
   constructor(
     private _productApi: ProductService,
@@ -54,19 +55,29 @@ export class MenuComponent implements OnInit {
   }
 
   add2Favorite(product: ProductModel) {
-    let items = [];
+  
     const val = localStorage.getItem('items');
 
     if (val !== null) {
-      items = JSON.parse(val);
+     this.myFavArray = JSON.parse(val);
     }
 
-     items.push(product);
-      localStorage.setItem('items', JSON.stringify(items));
-       this._notificationService.showSuccess(
-         'محصول با موفقیت به علاقه مندی ها اضافه شد.'
-       );
+    let checkExists: boolean = false;
+    for (var i = 0; i < this.myFavArray.length; i++) {
+      if (product.id == this.myFavArray[i].id) {
+        checkExists = true;
+        this._notificationService.showWarning(
+          'محصول مورد نظر در علاقه مندی وجود دارد!!'
+        );
+      }
+    }
+    if (checkExists == false) {
+      this.myFavArray.push(product);
+      this._notificationService.showSuccess(
+        'محصول با موفقیت به علاقه مندی ها اضافه شد.'
+      );
+    }
+    localStorage.setItem('items', JSON.stringify(this.myFavArray));
     
-      
   }
 }
