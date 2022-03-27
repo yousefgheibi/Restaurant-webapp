@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductListModel } from 'src/app/models/productList.model';
 import { CartService } from 'src/app/services/cart.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,10 @@ export class CartComponent implements OnInit {
   public products: ProductListModel = {};
   count: number = 0;
   totalPrice: number = 0;
-  constructor(public router: Router, private cartService: CartService) {}
+  constructor(
+    public router: Router,
+    private cartService: CartService,
+    private _notificationService : NotificationService) {}
 
   ngOnInit(): void {
     this.cartService.productList.subscribe((res) => {
@@ -27,6 +31,9 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(product: ProductModel) {
+    this._notificationService.showWarning(
+      'محصول با موفقیت از سبد خرید حذف شد!'
+    );
     this.cartService.removeCartItem(product);
   }
 

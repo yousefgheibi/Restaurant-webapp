@@ -38,6 +38,9 @@ export class FavoriteComponent implements OnInit {
     const index = this.favoriteProducts.indexOf(item);
     this.favoriteProducts.splice(index, 1);
     localStorage.setItem('items', JSON.stringify(this.favoriteProducts));
+    this._notificationService.showWarning(
+      'محصول با موفقیت از علاقه مندی حذف شد!'
+    );
     this.hasProduct();
   }
 
