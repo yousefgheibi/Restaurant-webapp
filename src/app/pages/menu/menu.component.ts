@@ -3,6 +3,7 @@ import { ProductModel } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -13,12 +14,12 @@ export class MenuComponent implements OnInit {
   p: any;
   searchKey!: string;
   productData: ProductModel[] = [];
-  myFavArray: ProductModel[] = [];
 
   constructor(
     private _productApi: ProductService,
     private _cartService: CartService,
-    private _notificationService: NotificationService
+    private _notificationService: NotificationService,
+    private _favoriteService: FavoriteService
   ) {}
 
   ngOnInit(): void {
@@ -55,29 +56,6 @@ export class MenuComponent implements OnInit {
   }
 
   add2Favorite(product: ProductModel) {
-  
-    const val = localStorage.getItem('items');
-
-    if (val !== null) {
-     this.myFavArray = JSON.parse(val);
-    }
-
-    let checkExists: boolean = false;
-    for (var i = 0; i < this.myFavArray.length; i++) {
-      if (product.id == this.myFavArray[i].id) {
-        checkExists = true;
-        this._notificationService.showWarning(
-          'محصول مورد نظر در علاقه مندی وجود دارد!!'
-        );
-      }
-    }
-    if (checkExists == false) {
-      this.myFavArray.push(product);
-      this._notificationService.showSuccess(
-        'محصول با موفقیت به علاقه مندی ها اضافه شد.'
-      );
-    }
-    localStorage.setItem('items', JSON.stringify(this.myFavArray));
-    
+    this._favoriteService.addToFavorite(product);
   }
 }
