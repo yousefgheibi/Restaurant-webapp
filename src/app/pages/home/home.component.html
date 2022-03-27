@@ -71,219 +71,55 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="pill" href="#Kebabs">کباب ها</a>
+          <a class="nav-link" data-bs-toggle="pill" href="#entree">کباب ها</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="pill" href="#stewed">خورشتی</a>
+          <a class="nav-link" data-bs-toggle="pill" href="#entree">خورشتی</a>
         </li>
-
       </ul>
 
       <div class="tab-content">
         <div id="entree" class="container tab-pane active">
           <br />
           <div class="container">
-            <div class="row">
-              <div class="col-md-4">
+            <div *ngIf="isWaitProducts" class="row">
+              <div
+                class="col-md-4"
+                *ngFor="let product of productData.slice(0, 3)"
+              >
                 <div class="card">
                   <img
                     class="card-img-top"
-                    src="../../../assets/img/products/p-1.jpg"
+                    src="../../../assets/img/products/{{ product.image }}"
                     alt="Card image"
                     class="w-100"
                   />
                   <div class="card-body">
-                    <p class="card-title">باقالی پلو با مرغ</p>
-                    <small class="price">70,000 تومان</small>
+                    <p class="card-title">{{ product.name }}</p>
+                    <small class="price">
+                      {{
+                        product.price | currency: "  ":"symbol-narrow":"4.0"
+                      }}
+                      تومان</small
+                    >
                     <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
+                      <button class="add-to-cart" (click)="add2Cart(product)">
+                        <span class="material-icons">shopping_cart</span>
+                        &nbsp;اضافه به سبد خرید
                       </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="../../../assets/img/products/p-2.jpg"
-                    alt="Card image"
-                    class="w-100"
-                  />
-                  <div class="card-body">
-                    <p class="card-title">زرشک پلو با مرغ</p>
-                    <small class="price">60,000 تومان</small>
-                    <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="../../../assets/img/products/p-3.jpg"
-                    alt="Card image"
-                    class="w-100"
-                  />
-                  <div class="card-body">
-                    <p class="card-title">ته چین ویژه با مرغ</p>
-                    <small class="price">60,000 تومان</small>
-                    <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
+                      <button
+                        class="add-to-favorite"
+                        (click)="add2Favorite(product)"
+                      >
+                        <span class="material-icons"> favorite_border </span>
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div id="Kebabs" class="container tab-pane fade">
-          <br />
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="../../../assets/img/products/p-1.jpg"
-                    alt="Card image"
-                    class="w-100"
-                  />
-                  <div class="card-body">
-                    <p class="card-title">باقالی پلو با مرغ</p>
-                    <small class="price">70,000 تومان</small>
-                    <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="../../../assets/img/products/p-2.jpg"
-                    alt="Card image"
-                    class="w-100"
-                  />
-                  <div class="card-body">
-                    <p class="card-title">زرشک پلو با مرغ</p>
-                    <small class="price">60,000 تومان</small>
-                    <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="../../../assets/img/products/p-3.jpg"
-                    alt="Card image"
-                    class="w-100"
-                  />
-                  <div class="card-body">
-                    <p class="card-title">ته چین ویژه با مرغ</p>
-                    <small class="price">60,000 تومان</small>
-                    <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="stewed" class="container tab-pane fade">
-          <br />
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="../../../assets/img/products/p-1.jpg"
-                    alt="Card image"
-                    class="w-100"
-                  />
-                  <div class="card-body">
-                    <p class="card-title">باقالی پلو با مرغ</p>
-                    <small class="price">70,000 تومان</small>
-                    <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="../../../assets/img/products/p-2.jpg"
-                    alt="Card image"
-                    class="w-100"
-                  />
-                  <div class="card-body">
-                    <p class="card-title">زرشک پلو با مرغ</p>
-                    <small class="price">60,000 تومان</small>
-                    <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="../../../assets/img/products/p-3.jpg"
-                    alt="Card image"
-                    class="w-100"
-                  />
-                  <div class="card-body">
-                    <p class="card-title">ته چین ویژه با مرغ</p>
-                    <small class="price">60,000 تومان</small>
-                    <div class="btn-actions">
-                      <button class="add-to-cart">
-                        <span class="material-icons">shopping_cart</span>اضافه
-                        به سبد خرید
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div *ngIf="!isWaitProducts" class="m-5 text-center">
+              <img src="../../../assets/img/loading.gif" class="w-50" />
             </div>
           </div>
         </div>
@@ -334,26 +170,30 @@
       </div>
 
       <div class="container">
-        <div class="row">
-          <div class="col-md-4" *ngFor="let item of blogData">
+        <div *ngIf="isWaitBlog" class="row">
+          <div class="col-md-4" *ngFor="let blog of blogData">
             <div class="card">
               <img
                 class="card-img-top"
-                src="../../../assets/img/{{item.image}}"
+                src="../../../assets/img/{{ blog.image }}"
                 alt="Card image"
                 class="w-100"
               />
               <div class="card-body">
-                <p class="card-title" [routerLink]="['/blog',item.id]">{{item.title}}</p>
-                <small>{{item.subcontent}}</small
-                >
+                <p class="card-title" [routerLink]="['/blog', blog.id]">
+                  {{ blog.title }}
+                </p>
+                <small>{{ blog.subcontent }}</small>
                 <div class="btn-actions">
-                  <div class="date">{{item.date}}</div>
-                  <a [routerLink]="['/blog',item.id]">بیشتر</a>
+                  <div class="date">{{ blog.date }}</div>
+                  <a [routerLink]="['/blog', blog.id]">بیشتر</a>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div *ngIf="!isWaitBlog" class="m-5 text-center">
+          <img src="../../../assets/img/loading.gif" class="w-50" />
         </div>
       </div>
     </div>
