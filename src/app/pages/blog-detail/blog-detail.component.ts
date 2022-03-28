@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BlogModel } from 'src/app/models/blog.model';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -8,10 +9,12 @@ import { BlogService } from 'src/app/services/blog.service';
   templateUrl: './blog-detail.component.html',
   styleUrls: ['./blog-detail.component.scss'],
 })
-export class BlogDetailComponent implements OnInit {
+export class BlogDetailComponent implements OnInit, OnDestroy {
+  subscriptionSingleBlog: Subscription | undefined;
+  subscriptionAllBlog: Subscription | undefined;
   isWait: boolean = true;
   blog: any;
-  allblog : BlogModel[] = [];
+  allblog: BlogModel[] = [];
   constructor(private route: ActivatedRoute, private _api: BlogService) {}
 
   ngOnInit(): void {
@@ -19,19 +22,31 @@ export class BlogDetailComponent implements OnInit {
     this.getAllBlog();
   }
 
-  getSingleBlog(){
-     const routeParams = this.route.snapshot.paramMap;
-     const blogIdFromRoute = Number(routeParams.get('blogId'));
-     this._api.getSingleBlog(blogIdFromRoute).subscribe((res) => {
-       this.blog = res;
-       this.isWait = false;
-     });
+  getSingleBlog() {
+    const routeParams = this.route.snapshot.paramMap;
+    const blogIdFromRoute = Number(routeParams.get('blogId'));
+    this.subscriptionSingleBlog = this._api
+      .getSingleBlog(blogIdFromRoute)
+      .subscribe((res) => {
+        this.blog = res;
+        this.isWait = false;
+      });
   }
 
-  getAllBlog(){
- this._api.getBlogs().subscribe((res) => {
-   this.allblog = res;
-   this.isWait = false;
- });
+  getAllBlog() {
+    this.subscriptionAllBlog = this._api.getBlogs().subscribe((res) => {
+      this.allblog = res;
+      this.isWait = false;
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscriptionSingleBlog) {
+      this.subscriptionSingleBlog.unsubscribe();
+    }
+
+    if (this.subscriptionAllBlog) {
+      this.subscriptionAllBlog.unsubscribe();
+    }
   }
 }

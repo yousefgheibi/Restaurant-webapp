@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BlogModel } from 'src/app/models/blog.model';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -7,11 +8,12 @@ import { BlogService } from 'src/app/services/blog.service';
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent implements OnInit, OnDestroy {
+  subscription: Subscription | undefined;
   searchKey!: string;
   p: any;
   isWait: boolean = true;
-  public blogData: BlogModel[] = [];
+  blogData: BlogModel[] = [];
   constructor(private _api: BlogService) {}
 
   ngOnInit(): void {
@@ -19,7 +21,7 @@ export class BlogComponent implements OnInit {
   }
 
   getBlog() {
-    this._api.getBlogs().subscribe((res) => {
+    this.subscription = this._api.getBlogs().subscribe((res) => {
       this.blogData = res;
       this.isWait = false;
     });
@@ -36,6 +38,12 @@ export class BlogComponent implements OnInit {
       this.blogData = result;
     } else {
       this.getBlog();
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 }

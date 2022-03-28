@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductListModel } from 'src/app/models/productList.model';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,17 +11,19 @@ import { NotificationService } from 'src/app/services/notification.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit {
-  public products: ProductListModel = {};
+export class CartComponent implements OnInit, OnDestroy {
+  subscription : Subscription | undefined;
+  products: ProductListModel = {};
   count: number = 0;
   totalPrice: number = 0;
   constructor(
     public router: Router,
     private cartService: CartService,
-    private _notificationService : NotificationService) {}
+    private _notificationService: NotificationService
+  ) {}
 
   ngOnInit(): void {
-    this.cartService.productList.subscribe((res) => {
+    this.subscription = this.cartService.productList.subscribe((res) => {
       this.products = res;
       for (let id in res) {
         let value = res[id];
@@ -69,5 +72,11 @@ export class CartComponent implements OnInit {
 
   hasProducts(): boolean {
     return this.products && Object.keys(this.products).length > 0;
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

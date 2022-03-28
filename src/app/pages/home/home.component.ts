@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BlogModel } from 'src/app/models/blog.model';
 import { ProductModel } from 'src/app/models/product.model';
 import { BlogService } from 'src/app/services/blog.service';
@@ -12,7 +13,9 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit , OnDestroy {
+  subscriptionBlog: Subscription | undefined;
+  subscriptionMenu: Subscription | undefined;
   isWaitBlog: boolean = false;
   isWaitProducts: boolean = false;
   blogData: BlogModel[] = [];
@@ -22,7 +25,7 @@ export class HomeComponent implements OnInit {
     private _productApi: ProductService,
     private _cartService: CartService,
     private _notificationService: NotificationService,
-    private _favoriteService : FavoriteService
+    private _favoriteService: FavoriteService
   ) {}
 
   ngOnInit(): void {
@@ -52,5 +55,14 @@ export class HomeComponent implements OnInit {
 
   add2Favorite(product: ProductModel) {
     this._favoriteService.addToFavorite(product);
+  }
+
+  ngOnDestroy(): void {
+    if(this.subscriptionBlog){
+      this.subscriptionBlog.unsubscribe();
+    }
+    if(this.subscriptionMenu){
+      this.subscriptionMenu.unsubscribe();
+    }
   }
 }
