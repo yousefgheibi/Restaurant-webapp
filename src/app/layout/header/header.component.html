@@ -38,7 +38,7 @@
           >
         </li>
       </ul>
-      <span class="material-icons me-auto"> person_outline </span>
+      <span class="material-icons me-auto" [routerLink]="['/my-account']"> person_outline </span>
       <span class="material-icons me-3" [routerLink]="['/favorite']">
         favorite_border
       </span>
@@ -94,7 +94,7 @@
     </a>
   </div>
   <div class="py-5 icons">
-    <span class="material-icons me-4" (click)="onCloseMenu()">
+    <span class="material-icons me-4" (click)="onCloseMenu()" [routerLink]="['/my-account']">
       person_outline
     </span>
     <span

@@ -18,6 +18,7 @@ import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
+import { MyAcountComponent } from './pages/my-acount/my-acount.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { FavoriteComponent } from './pages/favorite/favorite.component';
     MenuComponent,
     CartComponent,
     FavoriteComponent,
+    MyAcountComponent,
   ],
   imports: [
     BrowserModule,

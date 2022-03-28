@@ -9,6 +9,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { MyAcountComponent } from './pages/my-acount/my-acount.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
       { path: 'blog/:blogId', component: BlogDetailComponent },
       { path: 'menu', component: MenuComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'favorite', component: FavoriteComponent }
+      { path: 'favorite', component: FavoriteComponent },
+      { path: 'my-account', component: MyAcountComponent }
     ],
   },
 ];
