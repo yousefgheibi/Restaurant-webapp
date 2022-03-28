@@ -310,16 +310,41 @@
   }
 }
 
-
-@media screen and (max-width:991px) {
-  .menu .nav-pills{
+@media screen and (max-width: 991px) {
+  .menu .nav-pills {
     margin-right: 10%;
     width: 80%;
   }
 }
 
-@media screen and (max-width:767px) {
-  .buttom-hero .box-feature{
-border: none;
+@media screen and (max-width: 767px) {
+  .buttom-hero .box-feature {
+    border: none;
+  }
+}
+
+@media screen and (max-width:480px){
+  .hero{
+    h1{
+      font-size: 2.3rem;
+    }
+    h3{
+      font-size: 1.3rem;
+    }
+    p{
+      font-size: 0.9rem;
+    }
+  }
+
+  .read-more{
+    h4{
+      text-align: center;
+      font-size: 1.4rem;
+      line-height: 2.7rem;
+    }
+    p{
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+    }
   }
 }

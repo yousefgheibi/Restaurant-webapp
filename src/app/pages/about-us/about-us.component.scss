@@ -121,3 +121,34 @@ box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.27);
         border-left: none !important;
     }
 }
+
+@media screen and (max-width:480px) {
+  .content{
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .services{
+    .service-box{
+      h4{
+        font-size: 0.9rem;
+      }
+      span{
+        font-size: 3rem;
+      }
+      p{
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .read-more{
+    h4{
+      font-size: 1.5rem;
+    }
+    p,li{
+      font-size: 0.9rem;
+    }
+  }
+}

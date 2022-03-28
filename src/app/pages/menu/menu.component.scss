@@ -182,3 +182,28 @@
     }
   }
 }
+
+
+@media screen and (max-width:480px){
+  .menu {
+    .card{
+      .card-title{
+        font-size: 0.9rem;
+      }
+      .btn-actions{
+        .add-to-cart{
+          font-size: 0.6rem;
+          span{
+            font-size: 0.75rem;
+            margin-left: 1px;
+          }
+        }
+        .add-to-favorite{
+          span{
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}
