@@ -75,6 +75,23 @@
   }
 }
 
+.user-information{
+  input:focus {
+    box-shadow: none;
+    outline: none;
+  }
+   button {
+    background: #ffc20f;
+    width: 100%;
+    transition: all 300ms ease;
+
+    &:hover {
+      background: #ca131f;
+      color: #fff;
+    }
+  }
+}
+
 @media (max-width: 480px) {
   .dashboard {
       h3{

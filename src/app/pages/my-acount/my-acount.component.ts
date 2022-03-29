@@ -13,6 +13,7 @@ export class MyAcountComponent implements OnInit {
   isShowDashboard: Boolean = false;
   signupForm!: FormGroup;
   loginForm!: FormGroup;
+  updateForm !: FormGroup;
   loginedUser!: UserModel;
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,14 @@ export class MyAcountComponent implements OnInit {
       password: [''],
       address: [''],
     });
+
+     this.updateForm = this.formBuilder.group({
+       firstName: [''],
+       lastName: [''],
+       email: [''],
+       password: [''],
+       address: [''],
+     });
 
     this.loginForm = this.formBuilder.group({
       email: [''],
@@ -72,6 +81,15 @@ export class MyAcountComponent implements OnInit {
     });
   }
 
+  updateUserInformation(){
+      this._userApi.updateUser(this.updateForm.value,this.loginedUser.id)
+      .subscribe(res=>{
+        this.notification.showSuccess('اطلاعات با موفقیت بروز شد.');
+       
+      });
+
+  }
+
   isCheckLogin() {
     const val = localStorage.getItem('token');
     if (val !== null) {
@@ -80,7 +98,7 @@ export class MyAcountComponent implements OnInit {
     }
   }
 
-  exit(){
+  exit() {
     localStorage.removeItem('token');
     this.isShowDashboard = false;
     this.notification.showSuccess('خروج موفقیت امیز بود.');
