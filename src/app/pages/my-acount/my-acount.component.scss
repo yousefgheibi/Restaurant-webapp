@@ -1,37 +1,101 @@
-.my-account{
-    h2{
-        font-size: 1.3rem;
-    }
+.my-account {
+  h2 {
+    font-size: 1.3rem;
+  }
 
-    .form-label,input{
-        font-size: 0.9rem;
-    }
+  .form-label,
+  input {
+    font-size: 0.9rem;
+  }
 
-    input:focus{
-        box-shadow: none;
-        outline: none;
+  input:focus {
+    box-shadow: none;
+    outline: none;
+  }
+  button {
+    background: #ffc20f;
+    width: 100%;
+    transition: all 300ms ease;
+
+    &:hover {
+      background: #ca131f;
+      color: #fff;
     }
-    button{
-        background: #ffc20f;
+  }
+}
+
+@media (max-width: 767px) {
+  .bl-3 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 25px;
+  }
+}
+
+@media (min-width: 768px) {
+  .bl-3 {
+    border-left: 1px solid #ccc;
+  }
+}
+
+.dashboard {
+  h3 {
+    font-size: 1.5rem;
+  }
+  .nav-pills {
+    width: 60%;
+    margin-right: 20%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    padding-bottom: 20px;
+    border-bottom: 2px dotted #ffc20f;
+    li {
+      width: 120px;
+      font-size: 0.9rem;
+      button {
         width: 100%;
-        transition: all 300ms ease;
+        color: #ca131f;
 
-        &:hover{
-            background: #ca131f;
-            color: #fff;
+        &.active {
+          background: #ca131f !important;
+          color: #fff;
         }
+      }
     }
+  }
+
+  #pills-home {
+    a {
+      text-decoration: none;
+      cursor: pointer;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
 }
 
-@media (max-width:767px){
-    .bl-3{
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 25px;
+@media (max-width: 480px) {
+  .dashboard {
+      h3{
+          font-size: 1.2rem;
+      }
+    .nav-pills {
+        margin-right: 0;
+        width: 100%;
+      display: flex;
+      padding-right: 0;
+      justify-content: center;
+      li {
+          width: 25%;
+
+          button{
+              font-size: 10px;
+              width: 100%;
+          }
+      }
     }
+    
+  }
 }
 
-@media (min-width:768px){
-    .bl-3{
-        border-left: 1px solid #ccc;
-    }
-}
