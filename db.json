@@ -36,9 +36,9 @@
   ],
   "menu": [
     {
-      "id":1,
-      "name":"باقالی پلو با مرغ",
-      "price":70000,
+      "id": 1,
+      "name": "باقالی پلو با مرغ",
+      "price": 70000,
       "image": "p-1.jpg"
     },
     {
@@ -60,7 +60,30 @@
       "image": "p-2.jpg"
     }
   ],
-  "cart":[
-    
+  "users": [
+    {
+      "firstName": "یوسف",
+      "lastName": "غیبی",
+      "email": "yousef@gmail.com",
+      "password": "123456",
+      "address": "ایران ، ارومیه ، خیابان همافر",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "firstName": "علی",
+      "lastName": "رضایی",
+      "email": "ali@gmail.com",
+      "password": "123456",
+      "address": "تهران"
+    },
+    {
+      "id": 3,
+      "firstName": "حسین",
+      "lastName": "پیری",
+      "email": "test",
+      "password": "1234",
+      "address": "ew"
+    }
   ]
 }

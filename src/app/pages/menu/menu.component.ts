@@ -31,7 +31,6 @@ export class MenuComponent implements OnInit, OnDestroy {
   getProducts() {
     this.subscription = this._productApi.getAllProduct().subscribe((res) => {
       this.productData = res;
-      console.log(this.productData);
       this.isWait = true;
     });
   }
