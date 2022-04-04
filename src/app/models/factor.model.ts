@@ -1,7 +1,9 @@
 import { ProductListModel } from './productList.model';
 
 export interface FactorModel {
-  id?: number;
+  userId: number;
+  name : string;
+  id?: string;
   created_at: string;
   items: ProductListModel;
   totalPrice: number;

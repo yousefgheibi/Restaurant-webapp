@@ -1,25 +1,33 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { FactorModel } from 'src/app/models/factor.model';
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductListModel } from 'src/app/models/productList.model';
+import { UserModel } from 'src/app/models/user.model';
 import { CartService } from 'src/app/services/cart.service';
+import { FactorsService } from 'src/app/services/factors.service';
 import { NotificationService } from 'src/app/services/notification.service';
-
+import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit, OnDestroy {
-  subscription : Subscription | undefined;
+  subscription: Subscription | undefined;
   products: ProductListModel = {};
   count: number = 0;
   totalPrice: number = 0;
+  date: Date = new Date();
+  created_at: string = new Intl.DateTimeFormat('fa-IR').format(this.date);
+  loginedUser!: UserModel;
+
   constructor(
     public router: Router,
     private cartService: CartService,
-    private _notificationService: NotificationService
+    private _notificationService: NotificationService,
+    private _factorService : FactorsService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +39,11 @@ export class CartComponent implements OnInit, OnDestroy {
       this.calcualteCount();
       this.calculatePrice();
     });
+
+    const val = localStorage.getItem('token');
+    if (val !== null) {
+      this.loginedUser = JSON.parse(val);
+    }
   }
 
   removeItem(product: ProductModel) {
@@ -74,6 +87,27 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.products && Object.keys(this.products).length > 0;
   }
 
+  postFactor() {
+     const factor : FactorModel = {
+      id: uuidv4(),
+      userId: this.loginedUser.id,
+      name : this.loginedUser.firstName + this.loginedUser.lastName,
+      items : this.products,
+      created_at : this.created_at,
+      totalPrice : this.totalPrice
+    }
+
+    this._factorService.postInvoice(factor).subscribe(res => {
+      this._notificationService.showSuccess('فاکتور با موفقیت ذخیره شد.');
+      this.products = [];
+    },
+    (err) =>{
+      this._notificationService.showError('مشکلی پیش آمد.');
+      console.log(err);
+    });
+
+  
+  }
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();

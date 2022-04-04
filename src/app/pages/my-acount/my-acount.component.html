@@ -189,7 +189,10 @@
     <div class="container">
         <div class="row p-md-5">
           <div class="col-md-12">
-      <table class="table">
+            <div *ngIf="factorData.length == 0" class="text-center">
+              <p>هنوز خرید نکردی!</p>
+            </div>
+      <table *ngIf="factorData.length != 0" class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -199,7 +202,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of factorData ; let i = index">
+    <tr *ngFor="let item of factorData; let i = index">
       <th scope="row">{{i+1}}</th>
       <td>{{item.totalPrice | currency: "  ":"symbol-narrow":"4.0"}} تومان</td>
       <td>{{item.created_at}}</td> 
