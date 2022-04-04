@@ -33,7 +33,7 @@ import { MyAcountComponent } from './pages/my-acount/my-acount.component';
     MenuComponent,
     CartComponent,
     FavoriteComponent,
-    MyAcountComponent,
+    MyAcountComponent
   ],
   imports: [
     BrowserModule,

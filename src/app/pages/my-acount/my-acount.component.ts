@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FactorModel } from 'src/app/models/factor.model';
 import { UserModel } from 'src/app/models/user.model';
+import { FactorsService } from 'src/app/services/factors.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,15 +12,18 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./my-acount.component.scss'],
 })
 export class MyAcountComponent implements OnInit {
+  factorData: FactorModel[] = [];
   isShowDashboard: Boolean = false;
   signupForm!: FormGroup;
   loginForm!: FormGroup;
-  updateForm !: FormGroup;
-  loginedUser!: UserModel;
+  updateForm!: FormGroup;
+  loginedUser: any;
+
   constructor(
     private formBuilder: FormBuilder,
     private _userApi: UserService,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private _invoiceApi: FactorsService
   ) {}
 
   ngOnInit(): void {
@@ -31,13 +36,13 @@ export class MyAcountComponent implements OnInit {
       address: [''],
     });
 
-     this.updateForm = this.formBuilder.group({
-       firstName: [''],
-       lastName: [''],
-       email: [''],
-       password: [''],
-       address: [''],
-     });
+    this.updateForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      password: [''],
+      address: [''],
+    });
 
     this.loginForm = this.formBuilder.group({
       email: [''],
@@ -45,6 +50,13 @@ export class MyAcountComponent implements OnInit {
     });
 
     this.isCheckLogin();
+    
+  }
+
+  getFacors(userId : number) {
+    this._invoiceApi.getInvoices(userId).subscribe((res) => {
+      this.factorData = res;
+    });
   }
 
   signUp() {
@@ -81,13 +93,12 @@ export class MyAcountComponent implements OnInit {
     });
   }
 
-  updateUserInformation(){
-      this._userApi.updateUser(this.updateForm.value,this.loginedUser.id)
-      .subscribe(res=>{
+  updateUserInformation() {
+    this._userApi
+      .updateUser(this.updateForm.value, this.loginedUser.id)
+      .subscribe((res) => {
         this.notification.showSuccess('اطلاعات با موفقیت بروز شد.');
-       
       });
-
   }
 
   isCheckLogin() {
@@ -95,6 +106,7 @@ export class MyAcountComponent implements OnInit {
     if (val !== null) {
       this.loginedUser = JSON.parse(val);
       this.isShowDashboard = true;
+      this.getFacors(this.loginedUser.id);
     }
   }
 
