@@ -98,7 +98,7 @@ export class CartComponent implements OnInit, OnDestroy {
     }
 
     this._factorService.postInvoice(factor).subscribe(res => {
-      this._notificationService.showSuccess('فاکتور با موفقیت ذخیره شد.');
+      this._notificationService.showSuccess('خرید با موفقیت انجام شد.');
       this.products = [];
     },
     (err) =>{
