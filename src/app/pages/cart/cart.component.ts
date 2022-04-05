@@ -91,7 +91,7 @@ export class CartComponent implements OnInit, OnDestroy {
      const factor : FactorModel = {
       id: uuidv4(),
       userId: this.loginedUser.id,
-      name : this.loginedUser.firstName + this.loginedUser.lastName,
+      name : this.loginedUser.firstName + " " + this.loginedUser.lastName,
       items : this.products,
       created_at : this.created_at,
       totalPrice : this.totalPrice

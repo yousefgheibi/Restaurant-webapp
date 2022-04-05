@@ -121,3 +121,27 @@
   }
 }
 
+.modal{
+  tr{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 5px;
+  
+    &:last-child{
+      border: none;
+    }
+
+    &:first-child{
+      border-bottom: 2px solid #555;
+    }
+  }
+
+  img{
+    width: 50px;
+  }
+
+  .modal-footer{
+    border-top: none;
+  }
+}
