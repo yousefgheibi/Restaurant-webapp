@@ -208,7 +208,7 @@
       <td>{{item.created_at}}</td>
       <td>
         <ng-container *ngFor="let product of item.items | keyvalue">
-          <td>{{product.key}} عدد <span *ngIf="product.value[0] as menu">{{menu.name}} ( {{menu.price  | currency: "  ":"symbol-narrow":"4.0" }} تومان ) </span> ، </td>
+          <td>{{product.value.length}} عدد <span *ngIf="product.value[0] as menu">{{menu.name}} ( {{menu.price  | currency: "  ":"symbol-narrow":"4.0" }} تومان ) </span> ، </td>
         </ng-container>
       </td>
     </tr>
