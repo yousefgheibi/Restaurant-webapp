@@ -1,302 +1,193 @@
 <section *ngIf="!isShowDashboard" class="my-account p-3 p-md-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 p-md-5">
+    <div class="container">
         <div class="row">
-          <div class="col-md-6 px-md-5 pt-3 bl-3">
-            <h2>ورود</h2>
-            <form [formGroup]="loginForm" (ngSubmit)="login()">
-              <div class="my-3">
-                <label class="form-label">ایمیل</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  formControlName="email"
-                  required
-                  placeholder="آدرس ایمیل"
-                />
-              </div>
-              <div class="my-3">
-                <label class="form-label">رمز عبور</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  formControlName="password"
-                  required
-                  placeholder="رمز عبور"
-                />
-              </div>
+            <div class="col-md-12 p-md-5">
+                <div class="row">
+                    <div class="col-md-6 px-md-5 pt-3 bl-3">
+                        <h2>ورود</h2>
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <div class="my-3">
+                                <label class="form-label">ایمیل</label>
+                                <input type="email" class="form-control" formControlName="email" required placeholder="آدرس ایمیل" />
+                                <div *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+                                    <span class="valid-err" *ngIf="loginForm.controls['email'].errors?.['required']">این فیلد اجباری است.</span>
+                                    <span class="valid-err" *ngIf="loginForm.controls['email'].errors?.['pattern']">لطفا به صورت درست وارد کنید.</span>
+                                </div>
+                            </div>
+                            <div class="my-3">
+                                <label class="form-label">رمز عبور</label>
+                                <input type="password" class="form-control" formControlName="password" required placeholder="رمز عبور" />
+                                <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+                                    <span class="valid-err" *ngIf="loginForm.controls['password'].errors?.['required']">این فیلد اجباری است.</span>
+                                </div>
+                            </div>
 
-              <button
-                type="submit"
-                [disabled]="!loginForm.valid"
-                class="btn mt-3"
-              >
+                            <button type="submit" [disabled]="!loginForm.valid" class="btn mt-3">
                 ورود
               </button>
-            </form>
-          </div>
-          <div class="col-md-6 px-md-5 pt-3">
-            <h2>عضویت</h2>
-            <form [formGroup]="signupForm" (ngSubmit)="signUp()">
-              <div class="row">
-                <div class="col-md-6 my-3">
-                  <label class="form-label">نام</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="firstName"
-                    required
-                    placeholder="نام شما"
-                  />
-                </div>
-                <div class="col-md-6 my-3">
-                  <label class="form-label">نام خانوادگی</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="lastName"
-                    required
-                    placeholder="نام خانوادگی شما"
-                  />
-                </div>
-                <div class="col-md-6 my-3">
-                  <label class="form-label">ایمیل</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    formControlName="email"
-                    required
-                    placeholder="ایمیل شما"
-                  />
-                </div>
-                <div class="col-md-6 my-3">
-                  <label class="form-label">رمز عبور</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    formControlName="password"
-                    required
-                    placeholder="رمز عبور"
-                  />
-                </div>
-                <div class="col-md-12 my-3">
-                  <label class="form-label">آدرس</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="address"
-                    required
-                    placeholder="آدرس شما"
-                  />
-                </div>
-              </div>
-              <button
-                type="submit"
-                [disabled]="!signupForm.valid"
-                class="btn mt-3"
-              >
+                        </form>
+                    </div>
+                    <div class="col-md-6 px-md-5 pt-3">
+                        <h2>عضویت</h2>
+                        <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                            <div class="row">
+                                <div class="col-md-6 my-3">
+                                    <label class="form-label">نام</label>
+                                    <input type="text" class="form-control" formControlName="firstName" required placeholder="نام شما" />
+                                    <div *ngIf="signupForm.controls['firstName'].touched && signupForm.controls['firstName'].invalid">
+                                        <span class="valid-err" *ngIf="signupForm.controls['firstName'].errors?.['required']">این فیلد اجباری است.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-3">
+                                    <label class="form-label">نام خانوادگی</label>
+                                    <input type="text" class="form-control" formControlName="lastName" required placeholder="نام خانوادگی شما" />
+                                    <div *ngIf="signupForm.controls['lastName'].touched && signupForm.controls['lastName'].invalid">
+                                        <span class="valid-err" *ngIf="signupForm.controls['lastName'].errors?.['required']">این فیلد اجباری است.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-3">
+                                    <label class="form-label">ایمیل</label>
+                                    <input type="email" class="form-control" formControlName="email" required placeholder="ایمیل شما" />
+                                    <div *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].invalid">
+                                        <span class="valid-err" *ngIf="signupForm.controls['email'].errors?.['required']">این فیلد اجباری است.</span>
+                                        <span class="valid-err" *ngIf="signupForm.controls['email'].errors?.['pattern']">لطفا به صورت درست وارد کنید.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-3">
+                                    <label class="form-label">رمز عبور</label>
+                                    <input type="password" class="form-control" formControlName="password" required placeholder="رمز عبور" />
+                                    <div *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].invalid">
+                                        <span class="valid-err" *ngIf="signupForm.controls['password'].errors?.['required']">این فیلد اجباری است.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 my-3">
+                                    <label class="form-label">آدرس</label>
+                                    <input type="text" class="form-control" formControlName="address" required placeholder="آدرس شما" />
+                                    <div *ngIf="signupForm.controls['address'].touched && signupForm.controls['address'].invalid">
+                                        <span class="valid-err" *ngIf="signupForm.controls['address'].errors?.['required']">این فیلد اجباری است.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" [disabled]="!signupForm.valid" class="btn mt-3">
                 عضویت
               </button>
-            </form>
-          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <section *ngIf="isShowDashboard" class="dashboard p-3 p-md-5">
-  <div class="coontainer">
-    <div class="row">
-      <div class="col-md-12">
- <h3>حساب کاربری من</h3>
-  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button
-        class="nav-link active"
-        id="pills-home-tab"
-        data-bs-toggle="pill"
-        data-bs-target="#pills-home"
-        type="button"
-        role="tab"
-        aria-controls="pills-home"
-        aria-selected="true"
-      >
+    <div class="coontainer">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>حساب کاربری من</h3>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
         پیشخوان
       </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button
-        class="nav-link"
-        id="pills-profile-tab"
-        data-bs-toggle="pill"
-        data-bs-target="#pills-profile"
-        type="button"
-        role="tab"
-        aria-controls="pills-profile"
-        aria-selected="false"
-      >
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
         سفارشات
       </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button
-        class="nav-link"
-        id="pills-contact-tab"
-        data-bs-toggle="pill"
-        data-bs-target="#pills-contact"
-        type="button"
-        role="tab"
-        aria-controls="pills-contact"
-        aria-selected="false"
-      >
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
         جزئیات حساب
       </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" (click)="exit()">خروج</button>
-    </li>
-  </ul>
-  <div class="tab-content" id="pills-tabContent">
-    <div
-      class="tab-pane fade show active"
-      id="pills-home"
-      role="tabpanel"
-      aria-labelledby="pills-home-tab"
-    >
-      <div class="container">
-        <div class="row p-md-5">
-          <div class="col-md-12">
-            <p>
-              سلام {{ loginedUser.firstName | json }} ({{
-                loginedUser.firstName | json
-              }}
-              نیستید؟ <a (click)="exit()">خارج</a> شوید) از طریق پیشخوان حساب
-              کاربری‌تان، می‌توانید سفارش‌های اخیرتان را مشاهده، جزییات حساب
-              کاربری و کلمه عبور خود را ویرایش کنید.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="tab-pane fade"
-      id="pills-profile"
-      role="tabpanel"
-      aria-labelledby="pills-profile-tab"
-    >
-    <div class="container">
-        <div class="row p-md-5">
-          <div class="col-md-12">
-            <div *ngIf="factorData.length == 0" class="text-center">
-              <p>هنوز خرید نکردی!</p>
-            </div>
-      <table *ngIf="factorData.length != 0" class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">جمع کل</th>
-      <th scope="col">تاریخ</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of factorData; let i = index">
-      <th scope="row">{{i+1}}</th>
-      <td>{{item.totalPrice | currency: "  ":"symbol-narrow":"4.0"}} تومان</td>
-      <td>{{item.created_at}}</td>
-      <td>
-        <ng-container *ngFor="let product of item.items | keyvalue">
-          <td>{{product.value.length}} عدد <span *ngIf="product.value[0] as menu">{{menu.name}} ( {{menu.price  | currency: "  ":"symbol-narrow":"4.0" }} تومان ) </span> ، </td>
-        </ng-container>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-    </div>
-    <div
-      class="tab-pane fade"
-      id="pills-contact"
-      role="tabpanel"
-      aria-labelledby="pills-contact-tab"
-    >
-     <div class="container user-information">
-        <div class="row p-md-5">
-          <div class="col-md-12">
-         <form [formGroup]="updateForm" (ngSubmit)="updateUserInformation()">
-              <div class="row">
-                <div class="col-md-6 my-3">
-                  <label class="form-label">نام</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="firstName"
-                    required
-                    [(ngModel)]="loginedUser.firstName"
-                  />
-                </div>
-                <div class="col-md-6 my-3">
-                  <label class="form-label">نام خانوادگی</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="lastName"
-                    required
-                   [(ngModel)]="loginedUser.lastName"
-                  />
-                </div>
-                <div class="col-md-6 my-3">
-                  <label class="form-label">ایمیل</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    formControlName="email"
-                    required
-                    [(ngModel)]="loginedUser.email"
-                  />
-                </div>
-                <div class="col-md-6 my-3">
-                  <label class="form-label">رمز عبور</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    formControlName="password"
-                    required
-                    [(ngModel)]="loginedUser.password"
-                  />
-                </div>
-                <div class="col-md-12 my-3">
-                  <label class="form-label">آدرس</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="address"
-                    required
-                    [(ngModel)]="loginedUser.address"
-                  />
-                </div>
-              </div>
-              <button
-                type="submit"
-                [disabled]="!updateForm.dirty"
-                class="btn mt-3"
-              >
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" (click)="exit()">خروج</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="container">
+                            <div class="row p-md-5">
+                                <div class="col-md-12">
+                                    <p>
+                                        سلام {{ loginedUser.firstName | json }} ({{ loginedUser.firstName | json }} نیستید؟ <a (click)="exit()">خارج</a> شوید) از طریق پیشخوان حساب کاربری‌تان، می‌توانید سفارش‌های اخیرتان را مشاهده، جزییات حساب کاربری و
+                                        کلمه عبور خود را ویرایش کنید.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="container">
+                            <div class="row p-md-5">
+                                <div class="col-md-12">
+                                    <div *ngIf="factorData.length == 0" class="text-center">
+                                        <p>هنوز خرید نکردی!</p>
+                                    </div>
+                                    <table *ngIf="factorData.length != 0" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">جمع کل</th>
+                                                <th scope="col">تاریخ</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of factorData; let i = index">
+                                                <th scope="row">{{i+1}}</th>
+                                                <td>{{item.totalPrice | currency: " ":"symbol-narrow":"4.0"}} تومان</td>
+                                                <td>{{item.created_at}}</td>
+                                                <td>
+                                                    <ng-container *ngFor="let product of item.items | keyvalue">
+                                                        <td>{{product.value.length}} عدد <span *ngIf="product.value[0] as menu">{{menu.name}} ( {{menu.price  | currency: "  ":"symbol-narrow":"4.0" }} تومان ) </span> ، </td>
+                                                    </ng-container>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="container user-information">
+                            <div class="row p-md-5">
+                                <div class="col-md-12">
+                                    <form [formGroup]="updateForm" (ngSubmit)="updateUserInformation()">
+                                        <div class="row">
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">نام</label>
+                                                <input type="text" class="form-control" formControlName="firstName" required [(ngModel)]="loginedUser.firstName" />
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">نام خانوادگی</label>
+                                                <input type="text" class="form-control" formControlName="lastName" required [(ngModel)]="loginedUser.lastName" />
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">ایمیل</label>
+                                                <input type="email" class="form-control" formControlName="email" required [(ngModel)]="loginedUser.email" />
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <label class="form-label">رمز عبور</label>
+                                                <input type="password" class="form-control" formControlName="password" required [(ngModel)]="loginedUser.password" />
+                                            </div>
+                                            <div class="col-md-12 my-3">
+                                                <label class="form-label">آدرس</label>
+                                                <input type="text" class="form-control" formControlName="address" required [(ngModel)]="loginedUser.address" />
+                                            </div>
+                                        </div>
+                                        <button type="submit" [disabled]="!updateForm.dirty" class="btn mt-3">
               به روز رسانی
               </button>
-            </form>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
+        </div>
     </div>
-  </div>
-      </div>
-    </div>
-  </div>
- 
+
 </section>
-
-

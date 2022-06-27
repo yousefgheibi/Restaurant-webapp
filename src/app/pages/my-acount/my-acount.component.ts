@@ -37,16 +37,16 @@ export class MyAcountComponent implements OnInit {
     });
 
     this.updateForm = this.formBuilder.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      password: [''],
-      address: [''],
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z-0-9._%-]+\\.[a-z]{2,3}')]],
+      password: [null, [Validators.required]],
+      address: [null, [Validators.required]]
     });
 
     this.loginForm = this.formBuilder.group({
-      email: [''],
-      password: [''],
+      email: [null, [Validators.required, Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z-0-9._%-]+\\.[a-z]{2,3}')]],
+      password: [null, [Validators.required]]
     });
 
     this.isCheckLogin();
