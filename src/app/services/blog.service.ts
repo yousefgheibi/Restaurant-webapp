@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
+  url = environment.apiUrl;
   constructor(private _http: HttpClient) {}
   getBlogs() {
-    return this._http.get<any>('http://localhost:3000/blog/').pipe(
+    return this._http.get<any>(this.url+'blog/').pipe(
       map((res: any) => {
         return res;
       })
@@ -16,7 +18,7 @@ export class BlogService {
   }
 
   getSingleBlog(id: number) {
-    return this._http.get<any>(`http://localhost:3000/blog/${id}`).pipe(
+    return this._http.get<any>(this.url+`blog/${id}`).pipe(
       map((res: any) => {
         return res;
       })
