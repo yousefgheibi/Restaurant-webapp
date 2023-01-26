@@ -5,6 +5,7 @@ import { UserModel } from 'src/app/models/user.model';
 import { FactorsService } from 'src/app/services/factors.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
+import { GlobalContanst } from 'src/app/shared/globalContanst';
 
 @Component({
   selector: 'app-my-acount',
@@ -29,28 +30,28 @@ export class MyAcountComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       id: null,
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      password: [''],
-      address: [''],
+      firstName: ['',[Validators.required]],
+      lastName: ['',[Validators.required]],
+      email: ['',[Validators.required,Validators.pattern(GlobalContanst.emailRegex)]],
+      password: ['',[Validators.required]],
+      address: ['',[Validators.required]],
     });
 
     this.updateForm = this.formBuilder.group({
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
-      email: [null, [Validators.required, Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z-0-9._%-]+\\.[a-z]{2,3}')]],
+      email: [null, [Validators.required, Validators.pattern(GlobalContanst.emailRegex)]],
       password: [null, [Validators.required]],
       address: [null, [Validators.required]]
     });
 
     this.loginForm = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z-0-9._%-]+\\.[a-z]{2,3}')]],
+      email: [null, [Validators.required, Validators.pattern(GlobalContanst.emailRegex)]],
       password: [null, [Validators.required]]
     });
 
     this.isCheckLogin();
-    
+
   }
 
   getFacors(userId : number) {
