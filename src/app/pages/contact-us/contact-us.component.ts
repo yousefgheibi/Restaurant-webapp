@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactModel } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { GlobalContanst } from 'src/app/shared/globalContanst';
 
 @Component({
   selector: 'app-contact-us',
@@ -11,16 +12,17 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class ContactUsComponent implements OnInit {
   contactformValue!: FormGroup;
+  isSubmitActionDisabled = false;
   contactModelObj: ContactModel = new ContactModel();
   constructor(private formbuilder: FormBuilder, private _api: ContactService,private notification : NotificationService) {}
 
   ngOnInit(): void {
     this.contactformValue = this.formbuilder.group({
       id: null,
-      name: [''],
-      email: [''],
-      subject: [''],
-      message: [''],
+      name: ['',[Validators.required]],
+      email: ['',[Validators.required,Validators.pattern(GlobalContanst.emailRegex)]],
+      subject: ['',[Validators.required]],
+      message: ['',[Validators.required]],
     });
   }
 

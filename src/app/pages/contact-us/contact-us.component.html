@@ -65,6 +65,10 @@
                   required
                   placeholder="نام شما"
                 />
+                <div class="text-right valid"
+                *ngIf="contactformValue.controls['name'].touched && contactformValue.controls['name'].invalid">
+                <span class="valid-err" *ngIf="contactformValue.controls['name'].errors?.['required']">این قسمت اجباری است.</span>
+                </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label class="form-label">پست الکترونیک</label>
@@ -75,6 +79,11 @@
                   required
                   placeholder="ایمیل شما"
                 />
+                <div class="text-right valid"
+                *ngIf="contactformValue.controls['email'].touched && contactformValue.controls['email'].invalid">
+                <span class="valid-err" *ngIf="contactformValue.controls['email'].errors?.['required']">این قسمت اجباری است.</span>
+                <span class="valid-err" *ngIf="contactformValue.controls['email'].errors?.['pattern']">لطفا به صورت درست وارد کنید.</span>
+                </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label class="form-label"> موضوع</label>
@@ -85,6 +94,10 @@
                   required
                   placeholder="موضوع پیام"
                 />
+                <div class="text-right valid"
+                *ngIf="contactformValue.controls['subject'].touched && contactformValue.controls['subject'].invalid">
+                <span class="valid-err" *ngIf="contactformValue.controls['subject'].errors?.['required']">این قسمت اجباری است.</span>
+                </div>
               </div>
             </div>
 
@@ -97,9 +110,13 @@
                 required
                 placeholder="پیام خود را بنویسید..."
               ></textarea>
+              <div class="text-right valid"
+                *ngIf="contactformValue.controls['message'].touched && contactformValue.controls['message'].invalid">
+                <span class="valid-err" *ngIf="contactformValue.controls['message'].errors?.['required']">این قسمت اجباری است.</span>
+                </div>
             </div>
 
-            <button class="btn" (click)="sendEmail()">ارسال</button>
+            <button class="btn" (click)="sendEmail();isSubmitActionDisabled = true;" [disabled]="isSubmitActionDisabled || contactformValue.invalid">ارسال</button>
           </form>
         </div>
       </div>
