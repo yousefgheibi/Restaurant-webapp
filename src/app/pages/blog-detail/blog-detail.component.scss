@@ -10,6 +10,8 @@
     }
     img {
       border-radius: 10px 10px 0px 0px;
+      object-fit: cover;
+      height: 270px;
     }
     small {
       color: #777;
@@ -78,6 +80,6 @@
         small{
           display: none;
         }
-      } 
+      }
     }
 }
