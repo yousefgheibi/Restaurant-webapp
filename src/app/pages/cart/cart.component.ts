@@ -87,8 +87,10 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.products && Object.keys(this.products).length > 0;
   }
 
+
   postFactor() {
-     const factor : FactorModel = {
+    if(this.loginedUser){
+    const factor : FactorModel = {
       id: uuidv4(),
       userId: this.loginedUser.id,
       name : this.loginedUser.firstName + " " + this.loginedUser.lastName,
@@ -106,7 +108,10 @@ export class CartComponent implements OnInit, OnDestroy {
       console.log(err);
     });
 
-  
+    }
+    else{
+        this.router.navigate(['my-account']);
+    }
   }
   ngOnDestroy(): void {
     if (this.subscription) {
