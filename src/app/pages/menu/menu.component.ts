@@ -13,9 +13,11 @@ import { Subscription } from 'rxjs';
 export class MenuComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined;
   isWait: boolean = false;
-  p: any;
+  pageNumber: any;
   searchKey!: string;
   productData: ProductModel[] = [];
+  favoritedProducts: ProductModel[] = [];
+  isFavoritedProduct !: boolean;
 
   constructor(
     private _productApi: ProductService,
@@ -58,6 +60,10 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   add2Favorite(product: ProductModel) {
     this._favoriteService.addToFavorite(product);
+  }
+
+  checkFavoriteProduct(product: ProductModel): Boolean{
+   return this._favoriteService.checkFavoritedProduct(product);
   }
 
   ngOnDestroy(): void {

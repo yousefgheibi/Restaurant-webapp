@@ -39,6 +39,9 @@ export class HomeComponent implements OnInit , OnDestroy {
     });
   }
 
+  checkFavoriteProduct(product: ProductModel): Boolean{
+    return this._favoriteService.checkFavoritedProduct(product);
+   }
   getProducts() {
     this._productApi.getAllProduct().subscribe((res) => {
       this.productData = res;

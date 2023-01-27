@@ -111,7 +111,12 @@
                         class="add-to-favorite"
                         (click)="add2Favorite(product)"
                       >
-                        <span class="material-icons"> favorite_border </span>
+                      <span class="material-icons" *ngIf="checkFavoriteProduct(product)">
+                        favorite_border
+                      </span>
+                      <span class="material-icons" *ngIf="!checkFavoriteProduct(product)">
+                        favorite
+                      </span>
                       </button>
                     </div>
                   </div>

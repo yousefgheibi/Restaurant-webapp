@@ -7,15 +7,15 @@ import { NotificationService } from './notification.service';
 })
 export class FavoriteService {
   myFavArray: ProductModel[] = [];
-  constructor(private _notificationService: NotificationService) {}
 
-  addToFavorite(product: ProductModel) {
+  constructor(private _notificationService: NotificationService) {
     const val = localStorage.getItem('items');
-
     if (val !== null) {
       this.myFavArray = JSON.parse(val);
     }
+  }
 
+  addToFavorite(product: ProductModel) {
     let checkExists: boolean = false;
     for (var i = 0; i < this.myFavArray.length; i++) {
       if (product.id == this.myFavArray[i].id) {
@@ -33,4 +33,14 @@ export class FavoriteService {
     }
     localStorage.setItem('items', JSON.stringify(this.myFavArray));
   }
+
+  checkFavoritedProduct(product: ProductModel){
+    for (var i = 0; i < this.myFavArray.length; i++) {
+      if (product.id == this.myFavArray[i].id) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
+

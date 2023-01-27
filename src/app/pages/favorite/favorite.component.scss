@@ -128,10 +128,7 @@
     .remove-from-favorite {
       span {
         font-size: 1.2rem !important;
-        &:hover,
-        &.active {
-          color: #ca131f;
-        }
+        color: #ca131f;
       }
     }
   }

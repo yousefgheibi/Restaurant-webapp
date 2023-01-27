@@ -37,7 +37,7 @@
           </div>
           <div *ngIf="isWait" class="row">
             <div
-              *ngFor="let item of productData| paginate: { itemsPerPage: 8, currentPage: p }"
+              *ngFor="let item of productData| paginate: { itemsPerPage: 8, currentPage: pageNumber }"
               class="col-6 col-md-3">
               <div class="card mx-0">
                 <img
@@ -56,8 +56,11 @@
                       سبد خرید
                     </button>
                     <button class="add-to-favorite" (click)="add2Favorite(item)">
-                      <span class="material-icons">
+                      <span class="material-icons" *ngIf="checkFavoriteProduct(item)">
                         favorite_border
+                      </span>
+                      <span class="material-icons" *ngIf="!checkFavoriteProduct(item)">
+                        favorite
                       </span>
                     </button>
                   </div>
@@ -67,7 +70,7 @@
           </div>
           <pagination-controls
             *ngIf="isWait"
-            (pageChange)="p = $event"
+            (pageChange)="pageNumber = $event"
             previousLabel=""
             nextLabel=""
           >
